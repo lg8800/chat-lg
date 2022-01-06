@@ -40,6 +40,13 @@ public class JwtAuthenticationController {
 	
 	@PreAuthorize("permitAll()")
 	@CrossOrigin
+	@GetMapping
+	public String home() {
+		return "Hello World";
+	}
+	
+	@PreAuthorize("permitAll()")
+	@CrossOrigin
 	@PostMapping("/authenticate")
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
