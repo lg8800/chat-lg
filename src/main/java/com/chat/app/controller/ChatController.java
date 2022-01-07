@@ -29,7 +29,7 @@ public class ChatController {
 	private ChatRoomService chatRoomService;
 
 	@CrossOrigin
-	@PreAuthorize("permitAll()")
+//	@PreAuthorize("permitAll()")
 	@MessageMapping("/chat")
 	public void processMessage(@Payload ChatMessage chatMessage) {
 		Optional<String> chatId = chatRoomService.getChatId(chatMessage.getSenderId(), chatMessage.getRecipientId(),
@@ -45,21 +45,21 @@ public class ChatController {
 	}
 
 	@CrossOrigin
-	@PreAuthorize("permitAll()")
+//	@PreAuthorize("permitAll()")
 	@GetMapping("/messages/{senderId}/{recipientId}/count")
 	public ResponseEntity<Long> countNewMessages(@PathVariable String senderId, @PathVariable String recipientId) {
 		return ResponseEntity.ok(chatMessageService.countNewMessages(senderId, recipientId));
 	}
 
 	@CrossOrigin
-	@PreAuthorize("permitAll()")
+//	@PreAuthorize("permitAll()")
 	@GetMapping("/messages/{senderId}/{recipientId}")
 	public ResponseEntity<?> findChatMessages(@PathVariable String senderId, @PathVariable String recipientId) {
 		return ResponseEntity.ok(chatMessageService.findChatMessages(senderId, recipientId));
 	}
 
 	@CrossOrigin
-	@PreAuthorize("permitAll()")
+//	@PreAuthorize("permitAll()")
 	@GetMapping("/messages/{id}")
 	public ResponseEntity<?> findMessage(@PathVariable String id) {
 		return ResponseEntity.ok(chatMessageService.findById(id));
