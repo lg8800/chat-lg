@@ -16,8 +16,9 @@ public class AppApplication {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(AppApplication.class, args);
 	}
-	
+
 }

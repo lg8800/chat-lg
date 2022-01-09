@@ -81,13 +81,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	public void sendVerificationEmail(com.chat.app.entity.User newUser, String siteUrl)
 			throws UnsupportedEncodingException, MessagingException {
 		String subject = "Please verify your registration";
-		String senderName = "The Flarium Team";
+		String senderName = "The Voice Chat App";
 		String verifyUrl = siteUrl + "/verify?code=" + newUser.getVerificationCode();
 
 		String mailContent = "<p>Dear " + newUser.getFirstName() + " " + newUser.getLastName() + "</p>";
 		mailContent += "<p>Please click the below link to verify your registration</p>";
 		mailContent += "<h3><a href=" + verifyUrl + ">VERIFY</a></h3>";
-		mailContent += "<p>Thank you! <br> The Flarium Team</p>";
+		mailContent += "<p>Thank you! <br> The Voice Chat App</p>";
 
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
