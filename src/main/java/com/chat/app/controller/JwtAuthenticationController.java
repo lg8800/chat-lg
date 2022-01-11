@@ -14,8 +14,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chat.app.config.JwtTokenUtil;
@@ -80,6 +82,8 @@ public class JwtAuthenticationController {
 		return ResponseEntity.ok(savedUser);
 	}
 	
+	
+	
 	@GetMapping("/register/verify")
 	public ResponseEntity <?> verifyAccount(@Param("code") String code) {
 		boolean verified = userDetailsService.verify(code);
@@ -87,9 +91,17 @@ public class JwtAuthenticationController {
 						: ResponseEntity.ok("Your account was already verified or the verification code is invalid");
 	}
 	
+	@CrossOrigin
 	@GetMapping("/users")
 	public List <User> getUsers() {
 		return userDetailsService.findAll();
 	}
 	
+	@PreAuthorize("permitAll()")
+	@CrossOrigin
+	@GetMapping("/user/{email}")
+	public ResponseEntity <?> findByUsername(@PathVariable String email) {
+		com.chat.app.entity.User user = userDetailsService.findOne(email);
+		return ResponseEntity.ok(user);
+	}
 }
