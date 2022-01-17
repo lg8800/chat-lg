@@ -21,9 +21,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.chat.app.entity.Contact;
 import com.chat.app.entity.Role;
 import com.chat.app.entity.UserDto;
 import com.chat.app.repository.UserDao;
+
 import net.bytebuddy.utility.RandomString;
 
 @Service
@@ -73,7 +75,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		Set<Role> roleSet = new HashSet<>();
 		roleSet.add(role);
 		newUser.setRoles(roleSet);
-
+		newUser.setContacts(new ArrayList<Contact>());
 		return userDao.save(newUser);
 	}
 

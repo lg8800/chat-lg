@@ -1,5 +1,6 @@
 package com.chat.app.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
@@ -20,6 +21,7 @@ public class User {
 	private String verificationCode;
 
 	private Set<Role> roles;
+	private List<Contact> contacts;
 
 	public User() {
 	}
@@ -78,6 +80,14 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Contact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
 	}
 
 }
