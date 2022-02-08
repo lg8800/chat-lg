@@ -5,8 +5,6 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Builder;
-
 @Document(collection = "chat-message")
 public class ChatMessage {
 	@Id

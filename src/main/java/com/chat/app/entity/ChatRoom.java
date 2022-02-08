@@ -3,8 +3,6 @@ package com.chat.app.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Builder;
-
 @Document(collection = "chat-room")
 public class ChatRoom {
 	@Id
